@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import PregnantWomanSidebar from "../PregnantWoman/SideBar";
 import PregnantWomanHeader from "../PregnantWoman/Header";
 import ChwSideBar from "../CHW/SideBar";
-import ChwHeader from "../CHW/header";
+import ChwHeader from "../CHW/Header";
 import { AlignJustify, X } from "lucide-react";
 import HospitalSidebar from "../Hospital/Sidebar";
 
