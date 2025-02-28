@@ -1,0 +1,72 @@
+export function getHealthMetrics(data) {
+  return [
+    {
+      label: "Pregnancy Week",
+      value: data?.weekOfPregnancy,
+      unit: "weeks",
+      key: "weekOfPregnancy",
+      type: "number",
+      critical: true,
+    },
+    {
+      label: "Weight",
+      value: data?.weight,
+      unit: "kg",
+      key: "weight",
+      type: "number",
+      critical: true,
+    },
+    {
+      label: "Blood Pressure",
+      value: `${data?.bloodPressure?.systolic}/${data?.bloodPressure?.diastolic}`,
+      unit: "mmHg",
+      key: "bloodPressure",
+      type: "bloodPressure",
+      critical: true,
+    },
+    {
+      label: "Fetal Heart Rate",
+      value: data?.fetalHeartRate,
+      unit: "bpm",
+      key: "fetalHeartRate",
+      type: "number",
+      critical: true,
+    },
+    {
+      label: "Fetal Movements",
+      value: data?.fetalMovements,
+      unit: "per day",
+      key: "fetalMovements",
+      type: "number",
+      critical: true,
+    },
+    {
+      label: "Temperature",
+      value: data?.temperature,
+      unit: "°C",
+      key: "temperature",
+      type: "number",
+    },
+    {
+      label: "Hemoglobin",
+      value: data?.hemoglobinLevel,
+      unit: "g/dL",
+      key: "hemoglobinLevel",
+      type: "number",
+    },
+    {
+      label: "Blood Sugar (Fasting)",
+      value: data?.bloodSugar?.fasting,
+      unit: "mg/dL",
+      key: "bloodSugar",
+      type: "bloodSugar",
+    },
+    {
+      label: "Sleep",
+      value: data?.sleepHours,
+      unit: "hours",
+      key: "sleepHours",
+      type: "number",
+    },
+  ];
+}
