@@ -241,7 +241,7 @@ function Navigation() {
         </div>
 
         {/* User profile or toggle button */}
-        <div className="flex items-center">
+        <div className="flex items-center z-50">
           {isLoggedIn ? (
             <Dropdown
               arrowIcon={false}
