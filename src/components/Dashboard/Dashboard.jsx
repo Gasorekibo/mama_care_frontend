@@ -18,7 +18,7 @@ export default function Dashboard() {
   const { users } = useSelector((state) => state?.users);
 
   return (
-    <div className="flex flex-col gap-4 bg-primaryBg">
+    <div className="flex flex-col gap-4">
       <DashboardStatsGrid users={users} hospitals={hospitals} />
       <div className="flex flex-row gap-4 w-full">
         <TransactionChart />
