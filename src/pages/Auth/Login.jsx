@@ -57,7 +57,7 @@ const Login = () => {
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 py-16 px-4 sm:px-6 lg:px-8 pt-40">
-      <div className="max-w-xl mx-auto" style={{ maxWidth: "400px", color: "blue" , backgroundColor: "green"}}>
+      <div className="max-w-xl mx-auto">
         <Card className="shadow-xl border-0">
           <div className="space-y-8">
             {/* Header Section */}
