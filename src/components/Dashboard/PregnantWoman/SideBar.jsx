@@ -53,7 +53,7 @@ export default function PregnantWomanSidebar() {
     {
       key: "messages",
       label: "Messages",
-      path: `/profile/${id}/message`,
+      path: `/profile/${id}/messages`,
       icon: <HiOutlineAnnotation />,
     },
   ];
@@ -77,7 +77,7 @@ export default function PregnantWomanSidebar() {
     <div className="h-full bg-gradient-to-b from-blue-900/100 to-blue-800/90 w-60 p-3 flex flex-col">
       <Link to={"/"}>
         <div className="flex items-center gap-2 px-1 py-3">
-          <img src="../../../public/logo.png" alt="" className="h-6" />
+          <img src="/logo.png" alt="" className="h-6" />
           <span className="text-neutral-200 text-lg">MamaCare</span>
         </div>
       </Link>

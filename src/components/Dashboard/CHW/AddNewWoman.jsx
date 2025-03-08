@@ -12,6 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
+import { sendEmail } from "../../../redux/slices/emailSlice";
 const schema = yup
   .object({
     ...Object.fromEntries(
@@ -79,7 +80,27 @@ function AddNewWoman() {
       if (result?.error) {
         throw new Error(result?.payload);
       } else {
-          console.log(result?.payload?.id);
+         const emailData = {
+                    recipients: [data?.email],
+                    subject: `Your Credential for Mama-Care`,
+                    html: (
+                      <div>
+                        <h5>
+                          Hello you have been registered as a new user in Mama-Care. Here is your credential:
+                        </h5>
+                        <p>
+                          Email: {data.email}
+                        </p>
+                        <p>
+                          Password: {data.password}
+                        </p>
+                        <p>Phone Number: {data?.phoneNumber}</p>
+                        <p>Note: Please credentials should be kept confidentially as you will use them to login to Mama care.</p>
+                      </div>
+                    ),
+                  };
+                  dispatch(sendEmail(emailData));
+        console.log(data)
         setNewUserId(result?.payload?.id);
         setIsDoneRegister(true);
       }

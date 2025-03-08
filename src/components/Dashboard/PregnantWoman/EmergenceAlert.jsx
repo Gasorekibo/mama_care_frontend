@@ -16,6 +16,7 @@ import ModalPopUp from "../../shared/ModalPopUp";
 import getLocation from "../../../lib/helpers/getLocation";
 import toast from "react-hot-toast";
 import { findNearByHospitalAction } from "../../../redux/slices/hospitalSlice";
+import { sendEmail } from "../../../redux/slices/emailSlice";
 
 const EmergenceAlert = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const EmergenceAlert = () => {
   function closeModal() {
     setShowModal(false);
   }
-  
+
   const { notifications } = useSelector((state) => state.notifications);
   const [showNotification, setShowNotification] = useState(false);
   const [ourMessages, setOurMessages] = useState([]);
@@ -108,7 +109,7 @@ const EmergenceAlert = () => {
       (user) => user?.id !== auth?.user?.id && user?.role !== "ADMIN"
     );
   // =============================== Emergence Alert ===============================
-  function handleEmergencyAlert() {
+  async function handleEmergencyAlert() {
     const searchParams = {
       latitude: userLocation.latitude,
       longitude: userLocation.longitude,
@@ -131,11 +132,34 @@ const EmergenceAlert = () => {
             role: auth.user.role,
           },
         };
-        dispatch(createEmergencyAlert(alertData));
+        dispatch(createEmergencyAlert(alertData)).then(() => {
+          // ======= send Email to nearby hospitals =========
+          const emailData = {
+            recipients: nearByHospitals.map((hos) => hos?.email) || [],
+            subject: `Mama-Care New Emergence Alert from ${auth?.user?.full_name}`,
+            html: (
+              <div>
+                <h5>
+                  Hello there is a new emergence alert triggered. Be the first
+                  one to respond on it.
+                </h5>
+                <p>
+                  The location was triggered to you because you are close the
+                  emergence point located at: 
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${userLocation.latitude},${userLocation.longitude}`}
+                  >
+                    {userLocation.latitude}, {userLocation.longitude}
+                  </a>
+                </p>
+              </div>
+            ),
+          };
+          dispatch(sendEmail(emailData));
+        });
       }
     });
   }
-
   const { nearByHospitals, error: hospitalError } = useSelector(
     (state) => state.hospitals
   );
@@ -175,7 +199,7 @@ const EmergenceAlert = () => {
       </div>
 
       {showNotification && (
-        <NotificationComponent notifications={notifications} />
+        <NotificationComponent notifications={notifications} openModal={openModal} />
       )}
 
       {userToChatWith?.length > 0 &&
@@ -188,23 +212,26 @@ const EmergenceAlert = () => {
             auth={auth}
           />
         ))}
-      <button
-        onClick={handleEmergencyAlert}
-        disabled={loading}
-        className="bg-red-500 absolute right-3 bottom-20 md:font-bold animate-bounce flex gap-1 md:gap-3 p-3 text-white md:absolute md:right-0 md:bottom-0 md:p-8 md:text-xl rounded-full md:shadow-lg md:mr-4 md:mb-4 md:z-50 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {loading ? (
-          "Sending Alert..."
-        ) : (
-          <>
-            Emergency Alert
-            <Ambulance
-              size={20}
-              className="text-white font-extrabold animate-ping"
-            />
-          </>
-        )}
-      </button>
+      {auth?.user?.role === "PREGNANT_WOMAN" && (
+        <button
+          onClick={handleEmergencyAlert}
+          disabled={loading}
+          className="bg-red-500 absolute right-3 bottom-20 md:font-bold animate-bounce flex gap-1 md:gap-3 p-3 text-white md:absolute md:right-0 md:bottom-0 md:p-8 md:text-xl rounded-full md:shadow-lg md:mr-4 md:mb-4 md:z-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {loading ? (
+            "Sending Alert..."
+          ) : (
+            <>
+              Emergency Alert
+              <Ambulance
+                size={20}
+                className="text-white font-extrabold animate-ping"
+              />
+            </>
+          )}
+        </button>
+      )}
+
       <ModalPopUp
         showModal={showModal}
         closeModal={closeModal}

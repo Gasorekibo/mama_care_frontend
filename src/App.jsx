@@ -23,6 +23,7 @@ import { checkAuthAction } from "./redux/slices/authSlice";
 import HospitalDashboard from "./components/Dashboard/Hospital/Dashboard";
 import EmergencePage from "./components/Dashboard/Hospital/EmergencePage";
 import AllEmergencePage from "./components/Dashboard/PregnantWoman/AllEmergencePage";
+import AllProfessionals from "./components/Dashboard/Hospital/AllProfessionals";
 
 const App = () => {
   const { isLoggedIn, isCheckingAuth, auth } = useSelector(
@@ -75,9 +76,10 @@ const App = () => {
             <Route path="appointments" element={<AllAppointments />} />
             <Route path="users" element={<AllUsers />} />
             <Route path="hospitals" element={<AllHospitals />} />
-            <Route path="message" element={<EmergenceAlert />} />
+            <Route path="messages" element={<EmergenceAlert />} />
             <Route path="alerts" element={<AllEmergencePage />} />
             <Route path="nearest-hospital" element={<NearestHospital />} />
+            <Route path="professionals" element={<AllProfessionals />} />
             <Route path="hospital/emergence/:emergenceId" element={<EmergencePage />} />
             <Route
               path="pregnant-women-management"

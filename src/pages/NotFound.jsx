@@ -23,8 +23,8 @@ const NotFound = () => {
             Page Not Found
           </h2>
           <p className="text-gray-600">
-            The resource you are looking for might have been removed, had its
-            name changed, or is temporarily unavailable.
+            The resource you are looking for might have been removed,{" "}
+            <strong>Not yet implemented</strong>, or is temporarily unavailable.
           </p>
         </div>
 

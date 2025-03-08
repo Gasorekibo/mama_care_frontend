@@ -20,7 +20,7 @@ function AllEducation() {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div>
+    <div className="bg-gray-200">
       {error && (
         <p className="text-red-500 text-center text-3xl ">Error: {error}</p>
       )}

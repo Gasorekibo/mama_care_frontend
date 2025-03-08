@@ -22,9 +22,9 @@ export default function ChwSideBar() {
       icon: <HiOutlineViewGrid />,
     },
     {
-      key: "patients",
-      label: "Patient",
-      path: `/profile/${id}/patients`,
+      key: "professionals",
+      label: "Professionals",
+      path: `/profile/${id}/professionals`,
       icon: <Users />,
     },
     {
@@ -72,7 +72,7 @@ export default function ChwSideBar() {
     <div className="h-full bg-gradient-to-b from-blue-900/100 to-blue-800/90 w-60 p-3 flex flex-col">
       <Link to={"/"}>
         <div className="flex items-center gap-2 px-1 py-3">
-          <img src="../../../public/logo.png" alt="" className="h-6" />
+          <img src="/logo.png" alt="" className="h-6" />
           <span className="text-neutral-200 text-lg">MamaCare</span>
         </div>
       </Link>

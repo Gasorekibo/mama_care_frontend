@@ -91,6 +91,56 @@ export const loginHospitalAction = createAsyncThunk(
     }
   }
 );
+
+export const addNewHealthProfessional = createAsyncThunk(
+  "hospital/addNewHealthProfessional",
+  async (data, { rejectWithValue, getState }) => {
+    const user = getState()?.auth?.auth;
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user?.access_token}`,
+      },
+    };
+    try {
+      const response = await axios.post(
+        `${baseUrl}/health-professional/new/${user?.user?.id}`,
+        data,
+        config
+      );
+      return response.data;
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      } else {
+        return rejectWithValue(error.response.data.message);
+      }
+    }
+  }
+);
+
+export const addNewHospitalAction = createAsyncThunk(
+  "hospital/addNewHospital",
+  async (data, { rejectWithValue, getState }) => {
+    const user = getState()?.auth?.auth;
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user?.access_token}`,
+      },
+    };
+    try {
+      const response = await axios.post(`${baseUrl}/facility`, data, config);
+      return response.data;
+    } catch (error) {
+      if (!error.response) {
+        throw error;
+      } else {
+        return rejectWithValue(error.response.data.message);
+      }
+    }
+  }
+);
 const hospitalSlice = createSlice({
   name: "hospital",
   initialState: {
@@ -146,6 +196,30 @@ const hospitalSlice = createSlice({
         state.hospitals = action.payload;
       })
       .addCase(loginHospitalAction.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(addNewHealthProfessional.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(addNewHealthProfessional.fulfilled, (state, action) => {
+        state.loading = false;
+        state.hospitals = action.payload;
+      })
+      .addCase(addNewHealthProfessional.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(addNewHospitalAction.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(addNewHospitalAction.fulfilled, (state, action) => {
+        state.loading = false;
+        state.hospitals = [...state.hospitals, action.payload];
+      })
+      .addCase(addNewHospitalAction.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

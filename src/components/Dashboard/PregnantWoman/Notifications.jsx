@@ -5,7 +5,7 @@ import {
 } from "../../../redux/slices/notificationSlice";
 import { useCallback, useEffect } from "react";
 
-export const NotificationComponent = ({ notifications }) => {
+export const NotificationComponent = ({ notifications, openModal }) => {
   const dispatch = useDispatch();
   function handleReadNotification(notificationId) {
     dispatch({
@@ -38,7 +38,7 @@ export const NotificationComponent = ({ notifications }) => {
           className="bg-white shadow-lg rounded-lg p-4 mb-2 max-w-sm animate-slideIn"
         >
           <div
-            onClick={() => handleReadNotification(notification?.id)}
+            onClick={() => { handleReadNotification(notification?.id); openModal(notification?.senderUser?.id); console.log(notification)}}
             className="flex justify-between items-start cursor-pointer"
           >
             <div>

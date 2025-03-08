@@ -132,11 +132,11 @@ const Login = () => {
                     onClick={() => handleUserRole("user")}
                     type="submit"
                     color="blue"
-                    disabled={loading}
+                    disabled={loading && loginUserRole==="user"}
                     className="w-full"
                     size="lg"
                   >
-                    {loading ? (
+                    {loading && loginUserRole==="user" ? (
                       <LoaderIcon className="mx-auto" />
                     ) : (
                       "Sign in as User"
@@ -146,11 +146,11 @@ const Login = () => {
                     type="submit"
                     color="blue"
                     onClick={() => handleUserRole("hospital")}
-                    disabled={loading}
+                    disabled={loading && loginUserRole==="hospital"}
                     className="w-full"
                     size="lg"
                   >
-                    {loading ? (
+                    {loading && loginUserRole=== "hospital" ? (
                       <LoaderIcon className="mx-auto" />
                     ) : (
                       "Sign in as Hospital"

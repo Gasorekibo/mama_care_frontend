@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { assignHealthProfessionalAction } from "../../../../redux/slices/emergenceAlertSlice";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { sendEmail } from "../../../../redux/slices/emailSlice";
 function ResponseTeamTable({
   responders,
   emergencyId,
@@ -43,6 +44,32 @@ function ResponseTeamTable({
         `/profile/${result?.payload?.assignedFacility?.id}/hospital/emergence/${result?.payload?.id}`
       );
     }
+    const selectedProfessionalsEmails =
+      result?.payload?.assignedHealthProfessionals?.map(
+        (professional) => professional.email
+      );
+    const emailData = {
+      recipients: selectedProfessionalsEmails || [],
+      subject: `Mama-Care Emergence Alert`,
+      html: (
+        <div>
+          <h5>
+            Hello there is a new emergence alert triggered. Be the first one to
+            respond on it.
+          </h5>
+          <p>
+            This emergence alert was triggered to you because you are assigned
+            to the emergence point located at:{" "}
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${result?.payload?.location?.latitude},${result?.payload?.location?.longitude}`}
+            >
+              Emergence Alert Point
+            </a>
+          </p>
+        </div>
+      ),
+    };
+    dispatch(sendEmail(emailData));
   };
 
   return (

@@ -75,7 +75,7 @@ function AllEducationCard({
         </button>
         <ModalPopUp showModal={showModal} closeModal={closeModal}>
           <div className="">
-            <Modal.Body className="lg:h-screen lg:w-screen lg:max-w-screen-lg lg:relative lg:-left-28 bg-primaryBg dark:bg-gray-800 rounded-lg">
+            <Modal.Body className="lg:h-screen lg:w-screen lg:max-w-screen-lg lg:relative lg:-left-28 bg-gray-50 dark:bg-gray-800 rounded-lg">
               <VideoPlayer videoUrl={videoUrl} />
               <div className="p-8 lg:p-12">
                 <h3 className="mb-1 text-slate-900 font-semibold flex justify-between">

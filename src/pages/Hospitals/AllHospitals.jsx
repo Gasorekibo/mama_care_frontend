@@ -1,18 +1,52 @@
-import { Fragment, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHospitalAction } from "../../redux/slices/hospitalSlice";
 import AllHospitalTable from "./AllHospitalTable";
+import { Button, Modal } from "flowbite-react";
+import ModalPopUp from "../../components/shared/ModalPopUp";
+import AddNewHospital from "./AddNewHospital";
 
 function AllHospitals() {
+  const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
-  const { hospitals } = useSelector((state) => state.hospitals);
+  const { hospitals, loading } = useSelector((state) => state.hospitals);
+  const { auth } = useSelector((state) => state?.auth);
   useEffect(() => {
     dispatch(getAllHospitalAction());
-  }, [dispatch]);
+  }, [dispatch, hospitals?.length]);
+  function handleOpenModal() {
+    setOpenModal(true);
+  }
+  function handleCloseModal() {
+    setOpenModal(false);
+  }
   return (
-    <Fragment>
-      <AllHospitalTable hospitals={hospitals} />
-    </Fragment>
+    <div>
+      {auth?.user?.role === "ADMIN" && (
+        <Button
+          onClick={() => handleOpenModal()}
+          color="blue"
+          className="font-bold mb-2"
+        >
+          Add New
+        </Button>
+      )}
+
+      {loading ? (
+        <div className="mx-aut0 text-2xl">Loading ....</div>
+      ) : (
+        <AllHospitalTable hospitals={hospitals} />
+      )}
+      <ModalPopUp
+        showModal={openModal}
+        title={"Add New Hospital"}
+        closeModal={handleCloseModal}
+      >
+        <Modal.Body>
+          <AddNewHospital closeModal={handleCloseModal} />
+        </Modal.Body>
+      </ModalPopUp>
+    </div>
   );
 }
 

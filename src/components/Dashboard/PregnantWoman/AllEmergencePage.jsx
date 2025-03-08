@@ -42,7 +42,7 @@ const PatientEmergencyDashboard = () => {
     setEmergencies(unresolved);
     setFilteredEmergencies(unresolved);
     setLoading(false);
-  }, [myEmergence]);
+  }, []);
     if (emergenceLoading)
       return (
         <div className="flex items-center justify-center h-64">
@@ -65,12 +65,8 @@ const PatientEmergencyDashboard = () => {
     }
   };
 
-  // Actions
   const cancelEmergency = (id) => {
-    // API call would go here in a real implementation
     toast.success(`Emergency #${id} has been cancelled`);
-
-    // Update local state
     const updatedEmergencies = emergencies.filter(
       (emergency) => emergency.id !== id
     );

@@ -9,13 +9,14 @@ import { healthRecordsSlice } from "../slices/healthRecordsSlice";
 import appointmentsReducer from "../slices/appointmentsSlice";
 import { socketMiddleware } from "../middleware/socketMiddleware";
 import emergenceReducer from "../slices/emergenceAlertSlice";
+import emailReducer from "../slices/emailSlice";
 const store = configureStore({
   reducer: {
     auth: authReducer,
     users: usersReducer,
     education: educationReducer,
     hospitals: hospitalReducer,
-    //appointment: appointmentReducer,
+    email: emailReducer,
     healthRecord: healthRecordsSlice.reducer,
     appointments: appointmentsReducer,
     chat: chatReducer,

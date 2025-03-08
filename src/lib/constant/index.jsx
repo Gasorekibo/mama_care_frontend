@@ -110,7 +110,6 @@ export const filterUserOptions = [
 export const role = [
   { label: "Pregnant Woman", value: "PREGNANT_WOMAN" },
   { label: "chw", value: "COMMUNITY_HEALTH_WORKER" },
-  { label: "healthcare Provider", value: "HOSPITAL" },
 ];
 
 export const formFields = [

@@ -75,7 +75,7 @@ function Navigation() {
       className="px-4 text-primaryText bg-slate-100 shadow-md "
     >
       <button onClick={() => navigate("/")} className="flex items-center">
-        <img src="logo.png" className="mr-3 h-6 sm:h-9" alt="Mama care logo" />
+        <img src="/logo.png" className="mr-3 h-6 sm:h-9" alt="Mama care logo" />
       </button>
 
       {isLoggedIn && (
