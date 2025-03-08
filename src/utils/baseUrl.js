@@ -1,2 +1,2 @@
-export const baseUrl = " http://localhost:3000/api/v1";
+export const baseUrl = "https://mama-care-backend.onrender.com/api/v1";
 // Working deployed link = https://mama-care-backend.onrender.com
