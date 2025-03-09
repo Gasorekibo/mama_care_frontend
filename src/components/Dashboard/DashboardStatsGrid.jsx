@@ -44,7 +44,6 @@ export default function DashboardStatsGrid({ users, hospitals }) {
             <strong className="text-xl text-gray-700 font-semibold">
               {hospitals?.length}
             </strong>
-            <span className="text-sm text-red-500 pl-2">-30</span>
           </div>
         </div>
       </BoxWrapper>
