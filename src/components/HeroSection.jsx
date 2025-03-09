@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Carousel } from "flowbite-react";
 import classNames from "classnames";
-const HeroSection = ({ auth, navigate }) => {
+const HeroSection = ({ auth, navigate, hospitals }) => {
   return (
     <div className="relative">
       <div className="relative h-[70vh] overflow-hidden">
@@ -60,9 +60,9 @@ const HeroSection = ({ auth, navigate }) => {
       <div className="max-w-7xl mx-auto px-4 -mt-16 relative z-30">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
-            { number: "20+", label: "Hospital Registered" },
-            { number: "15k+", label: "Happy Patients" },
-            { number: "10+", label: "Years Experience" },
+            { number: hospitals?.length + "+", label: "Hospital Registered" },
+            { number: "500+", label: "Happy Patients" },
+            { number: "1+", label: "Years Experience" },
             { number: "24/7", label: "Emergency Care" },
           ].map((stat, index) => (
             <div

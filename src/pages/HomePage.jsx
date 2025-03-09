@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Footer from "../components/Footer";
 import { process } from "../utils/processes";
 import HeroSection from "../components/HeroSection";
@@ -9,7 +9,6 @@ import classname from "classnames";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
   const { auth } = useSelector((state) => state.auth);
   const { hospitals, error, loading } = useSelector((state) => state.hospitals);
   const navigate = useNavigate();
@@ -17,15 +16,9 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(getAllHospitalAction());
   }, [dispatch]);
-
-  const categories = [
-    { id: "all", name: "All Hospitals" },
-    { id: "speciality", name: "Specialty Centers" },
-    { id: "general", name: "General Care" },
-  ];
   return (
     <div className="min-h-screen bg-gray-50">
-      <HeroSection auth={auth} navigate={navigate} />
+      <HeroSection auth={auth} navigate={navigate} hospitals={hospitals} />
 
       {/* Process Section */}
       <div className="max-w-7xl mx-auto px-4 py-20">
@@ -62,22 +55,6 @@ const HomePage = () => {
             Our Hospital Network
           </h2>
 
-          {/* Categories */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-2 rounded-full transition-colors ${
-                  selectedCategory === category.id
-                    ? "bg-blue-500 text-white"
-                    : "bg-white text-gray-600 hover:bg-gray-100"
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
           {hospitals?.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {hospitals?.map((hospital) => (
