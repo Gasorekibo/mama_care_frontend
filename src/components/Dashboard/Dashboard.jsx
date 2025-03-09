@@ -1,8 +1,8 @@
-import BuyerProfilePieChart from "./BuyerProfilePieChart";
+
 import DashboardStatsGrid from "./DashboardStatsGrid";
 
 import RecentOrders from "./EmergeneAlerts";
-import TransactionChart from "./TransactionChart";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllHospitalAction } from "../../redux/slices/hospitalSlice";
@@ -21,12 +21,9 @@ export default function Dashboard() {
     <div className="flex flex-col gap-4">
       <DashboardStatsGrid users={users} hospitals={hospitals} />
       <div className="flex flex-row gap-4 w-full">
-        <TransactionChart />
-        <BuyerProfilePieChart />
       </div>
       <div className="flex flex-row gap-4 w-full">
         <RecentOrders hospitals={hospitals} />
-        {/* <PopularProducts /> */}
       </div>
     </div>
   );

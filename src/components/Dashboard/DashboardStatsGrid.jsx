@@ -16,7 +16,6 @@ export default function DashboardStatsGrid({ users, hospitals }) {
             <strong className="text-xl text-gray-700 font-semibold">
               {users?.length}
             </strong>
-            <span className="text-sm text-blue-500 pl-2">+343</span>
           </div>
         </div>
       </BoxWrapper>
@@ -29,10 +28,7 @@ export default function DashboardStatsGrid({ users, hospitals }) {
             Total Appointments
           </span>
           <div className="flex items-center">
-            <strong className="text-xl text-gray-700 font-semibold">
-              3423
-            </strong>
-            <span className="text-sm text-green-500 pl-2">-343</span>
+            <strong className="text-xl text-gray-700 font-semibold">46</strong>
           </div>
         </div>
       </BoxWrapper>
@@ -60,9 +56,8 @@ export default function DashboardStatsGrid({ users, hospitals }) {
           <span className="text-sm text-gray-500 font-light">Total Women</span>
           <div className="flex items-center">
             <strong className="text-xl text-gray-700 font-semibold">
-              16432
+              {users?.filter((user) => user?.role === "PREGNANT_WOMAN")?.length}
             </strong>
-            <span className="text-sm text-red-500 pl-2">-43</span>
           </div>
         </div>
       </BoxWrapper>
