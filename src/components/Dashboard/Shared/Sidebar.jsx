@@ -7,7 +7,6 @@ import {
   HiOutlineViewGrid,
   HiOutlineCube,
   HiOutlineUsers,
-  HiOutlineDocumentText,
   HiOutlineAnnotation,
   HiOutlineQuestionMarkCircle,
   HiOutlineCog,
@@ -42,18 +41,6 @@ export default function Sidebar() {
       label: "Hospitals",
       path: `/profile/${id}/hospitals`,
       icon: <FaRegHospital />,
-    },
-    {
-      key: "customers",
-      label: "Customers",
-      path: `/profile/${id}/customers`,
-      icon: <HiOutlineUsers />,
-    },
-    {
-      key: "transactions",
-      label: "Transactions",
-      path: `/profile/${id}/transactions`,
-      icon: <HiOutlineDocumentText />,
     },
     {
       key: "messages",
