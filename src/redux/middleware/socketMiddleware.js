@@ -7,7 +7,7 @@ export const socketMiddleware = (store) => {
   return (next) => (action) => {
     if (action.type === "socket/connect") {
       const token = store.getState().auth.auth?.access_token;
-      socket = io("http://localhost:3000", {
+      socket = io("https://mama-care-backend.onrender.com", {
         extraHeaders: {
           Authorization: `Bearer ${token}`,
         },
