@@ -130,9 +130,6 @@ function Navigation() {
               <Dropdown.Item onClick={() => navigate("/settings")}>
                 Settings
               </Dropdown.Item>
-              <Dropdown.Item onClick={() => navigate("/earnings")}>
-                Earnings
-              </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
             </Dropdown>
