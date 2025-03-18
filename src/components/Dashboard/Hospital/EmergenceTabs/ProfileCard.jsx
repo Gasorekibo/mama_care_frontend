@@ -38,7 +38,11 @@ function ProfileCard({ hospitals }) {
             <InfoItem
               icon={<Calendar />}
               label="Member Since"
-              value={dateFormatter(hospitals?.createdAt)}
+              value={
+                hospitals?.createdAt
+                  ? dateFormatter(hospitals?.createdAt)
+                  : "N/A"
+              }
             />
             <InfoItem
               icon={<MapPin />}
