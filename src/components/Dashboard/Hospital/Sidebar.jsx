@@ -8,12 +8,15 @@ import {
   HiOutlineCog,
 } from "react-icons/hi";
 import { Ambulance, Bed, FileText, Stethoscope, Users } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../../redux/slices/authSlice";
 
 const linkClass =
   "flex items-center gap-2 font-light px-3 py-2 text-neutral-50 hover:bg-blue-500 hover:no-underline active:bg-blue-600 rounded-sm text-base hover:transition hover:duration-500 hover:ease-in-out";
 
 export default function ChwSideBar() {
   const { id } = useParams();
+  const dispatch = useDispatch()
   const CHW_SIDEBAR_LINKS = [
     {
       key: "dashboard",
@@ -85,12 +88,12 @@ export default function ChwSideBar() {
         {CHW_SIDEBAR_BOTTOM_LINKS.map((link) => (
           <SidebarLink key={link.key} link={link} />
         ))}
-        <div className={classNames(linkClass, "cursor-pointer text-red-500")}>
+        <button onClick={()=> dispatch(logoutAction())} className={classNames(linkClass, "cursor-pointer text-red-500")}>
           <span className="text-xl">
             <HiOutlineLogout />
           </span>
           Logout
-        </div>
+        </button>
       </div>
     </div>
   );

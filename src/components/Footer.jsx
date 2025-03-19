@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { CiFacebook, CiInstagram, CiLinkedin, CiTwitter } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -118,12 +119,18 @@ const Footer = () => {
               © {currentYear} MamaCare. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="hover:text-blue-400 transition-colors">
+              <Link
+                to={"/privacy-policy"}
+                className="hover:text-blue-400 transition-colors"
+              >
                 Privacy Policy
-              </a>
-              <a href="#" className="hover:text-blue-400 transition-colors">
+              </Link>
+              <Link
+                to={"/terms-of-service"}
+                className="hover:text-blue-400 transition-colors"
+              >
                 Terms of Service
-              </a>
+              </Link>
               <a href="#" className="hover:text-blue-400 transition-colors">
                 Cookie Policy
               </a>
