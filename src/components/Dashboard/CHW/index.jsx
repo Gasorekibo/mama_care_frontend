@@ -4,6 +4,7 @@ import { getAllAppointmentsAction } from "../../../redux/slices/appointmentsSlic
 import { getAllEducationAction } from "../../../redux/slices/educationSlice";
 import getAllChwData from "../../../lib/helpers/getChwData";
 import { dateFormatter } from "../../../lib/helpers/index";
+import LoadingSpinner from "../../shared/LoadingSpinner";
 
 const CHWDashboard = () => {
   const dispatch = useDispatch();
@@ -20,16 +21,7 @@ const CHWDashboard = () => {
   }, [dispatch]);
 
   if (loading && fetchingEducations) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="flex flex-col items-center">
-          <div className="w-16 h-16 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
-          <p className="mt-4 text-lg font-medium text-gray-700">
-            Loading dashboard data...
-          </p>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   return (

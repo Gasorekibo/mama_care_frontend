@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllEmergenceAlertsAction } from "../../../redux/slices/emergenceAlertSlice";
 import { dateFormatter } from "../../../lib/helpers";
+import LoadingSpinner from "../../shared/LoadingSpinner";
 
 const PatientEmergencyDashboard = () => {
   // State for emergencies and UI
@@ -44,11 +45,7 @@ const PatientEmergencyDashboard = () => {
     setLoading(false);
   }, []);
     if (emergenceLoading)
-      return (
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-        </div>
-      );
+      return <LoadingSpinner />;
 
   // Filter functions
   const filterEmergencies = (filter) => {
@@ -227,9 +224,7 @@ const PatientEmergencyDashboard = () => {
       </div>
 
       {loading ? (
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-        </div>
+        <LoadingSpinner />
       ) : filteredEmergencies?.length === 0 ? (
         <div className="bg-white rounded-lg shadow p-6 text-center">
           <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">

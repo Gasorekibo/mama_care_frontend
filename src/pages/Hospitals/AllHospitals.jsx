@@ -5,6 +5,7 @@ import AllHospitalTable from "./AllHospitalTable";
 import { Button, Modal } from "flowbite-react";
 import ModalPopUp from "../../components/shared/ModalPopUp";
 import AddNewHospital from "./AddNewHospital";
+import LoadingSpinner from "../../components/shared/LoadingSpinner";
 
 function AllHospitals() {
   const [openModal, setOpenModal] = useState(false);
@@ -33,7 +34,7 @@ function AllHospitals() {
       )}
 
       {loading ? (
-        <div className="mx-aut0 text-2xl">Loading ....</div>
+        <LoadingSpinner />
       ) : (
         <AllHospitalTable hospitals={hospitals} />
       )}

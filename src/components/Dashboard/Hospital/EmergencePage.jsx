@@ -14,6 +14,7 @@ import TeamTab from "./EmergenceTabs/TeamTab";
 import { dateFormatter } from "../../../lib/helpers";
 import toast from "react-hot-toast";
 import { STATUS, TABS } from "../../../lib/constant";
+import LoadingSpinner from "../../shared/LoadingSpinner";
 
 
 // Status constants
@@ -83,11 +84,7 @@ function EmergencePage() {
 
   // Render loading state
   if (loading) {
-    return (
-      <div className="flex justify-center p-12">
-        <div className="animate-spin h-12 w-12 border-4 border-blue-500 rounded-full border-t-transparent"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   // Render error state

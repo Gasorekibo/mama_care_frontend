@@ -8,6 +8,7 @@ import { NotificationComponent } from "../PregnantWoman/Notifications";
 import ProfileCard from "./EmergenceTabs/ProfileCard";
 import EmergenceCard from "./EmergenceCard";
 import { useParams } from "react-router-dom";
+import LoadingSpinner from "../../shared/LoadingSpinner";
 
 const HospitalDashboard = () => {
   const { id } = useParams();
@@ -28,11 +29,7 @@ const HospitalDashboard = () => {
     (emergence) => emergence?.status === "PENDING"
   );
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (error) {

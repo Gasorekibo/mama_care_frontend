@@ -2,7 +2,6 @@
 import { useState } from "react";
 import PregnancyHealthRecordForm from "../PregnantWoman/PregnantHealthRecordForm";
 import { Button, Label, TextInput } from "flowbite-react";
-import { LoaderIcon } from "lucide-react";
 import SelectInput from "../../shared/SelectInput";
 import { formFields, role } from "../../../lib/constant";
 import toast from "react-hot-toast";
@@ -13,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import { sendEmail } from "../../../redux/slices/emailSlice";
+import LoadingSpinner from "../../shared/LoadingSpinner";
 const schema = yup
   .object({
     ...Object.fromEntries(
@@ -135,7 +135,7 @@ function AddNewWoman() {
 
           <Button className="w-full" type="submit" color="blue">
             {loading ? (
-              <LoaderIcon className="text-center font-extrabold mt-1" />
+              <LoadingSpinner/>
             ) : (
               "Register"
             )}

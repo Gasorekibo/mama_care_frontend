@@ -8,11 +8,11 @@ import {
   updateHealthRecord,
 } from "../../../redux/slices/healthRecordsSlice";
 import DietRecommendations from "./PregnantWomanDietRecommendation";
-import { LoaderIcon } from "react-hot-toast";
 import PregnancyHealthRecordForm from "./PregnantHealthRecordForm";
 import ModalPopUp from "../../shared/ModalPopUp";
 import BasicHealthRecords from "./BasicHealthRecords";
 import { Modal } from "flowbite-react";
+import LoadingSpinner from "../../shared/LoadingSpinner";
 const PregnancyDashboard = () => {
   const [showModal, setShowModal] = useState(false);
   function openModal() {
@@ -51,7 +51,7 @@ const PregnancyDashboard = () => {
   };
 
   if (loading || !pregnancyHealthRecords) {
-    return <LoaderIcon className="mx-auto z-50" />;
+    return <LoadingSpinner />;
   }
   const healthRecord = healthData || pregnancyHealthRecords?.[0];
   const pregnantTrimester =

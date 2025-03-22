@@ -5,7 +5,6 @@ import {
   BellRing,
   Check,
   Clock,
-  Loader,
   Users,
 } from "lucide-react";
 import { useEffect } from "react";
@@ -14,6 +13,7 @@ import getAllChwData from "../../../lib/helpers/getChwData";
 import { getAllAppointmentsAction } from "../../../redux/slices/appointmentsSlice";
 import { getAllEducationAction } from "../../../redux/slices/educationSlice";
 import { getAllUserAction } from "../../../redux/slices/userSlice";
+import LoadingSpinner from "../../shared/LoadingSpinner";
 
 const HeaderCard = ({
   icon: Icon,
@@ -85,7 +85,7 @@ function ChwHeader() {
   }, [dispatch, appointments.length, education.length, users.length]);
 
   if (fetchingAppointments || fetchingEducations || fetchingUsers) {
-    return <Loader size={56} className="flex items-center " />;
+    return <LoadingSpinner />;
   }
 
   const error = userError || appointmentError || educationError;
