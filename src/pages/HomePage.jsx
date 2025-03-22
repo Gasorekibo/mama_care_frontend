@@ -2,15 +2,14 @@ import { useEffect } from "react";
 import Footer from "../components/Footer";
 import { process } from "../utils/processes";
 import HeroSection from "../components/HeroSection";
-import HospitalCard from "../components/shared/HospitalCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHospitalAction } from "../redux/slices/hospitalSlice";
-import classname from "classnames";
 import { useNavigate } from "react-router-dom";
+import Testimonial from "../components/Testimonial";
 
 const HomePage = () => {
   const { auth } = useSelector((state) => state.auth);
-  const { hospitals, error, loading } = useSelector((state) => state.hospitals);
+  const { hospitals} = useSelector((state) => state.hospitals);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -47,25 +46,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div
-        className={classname("py-20 bg-gray-100", { hidden: error || loading })}
-      >
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
-            Our Hospital Network
-          </h2>
-
-          {hospitals?.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {hospitals?.slice(0,5)?.map((hospital) => (
-                <div key={hospital.id}>
-                  <HospitalCard hospital={hospital} />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
+   <Testimonial/>
 
       {/* CTA Section */}
       <div className="bg-blue-600 text-white py-20">
