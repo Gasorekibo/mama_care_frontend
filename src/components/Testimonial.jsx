@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Carousel } from "flowbite-react";
-import { testimonials } from "../../lib/constant";
+import { testimonials } from "../lib/constant";
 
 function Testimonial() {
   // Create paired testimonials for showing two at a time
