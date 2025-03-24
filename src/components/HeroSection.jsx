@@ -61,7 +61,7 @@ const HeroSection = ({ auth, navigate, hospitals }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
             {
-              number: hospitals?.length + "+" ||7,
+              number: hospitals?.length > 0 ? hospitals?.length + "+" : 7,
               label: "Hospital Registered",
             },
             { number: "20+", label: "Happy Patients" },
