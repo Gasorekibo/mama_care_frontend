@@ -16,76 +16,64 @@ const Footer = () => {
               excellence. Your health is our priority.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-blue-400 transition-colors">
+              <Link to={'/'} className="hover:text-blue-400 transition-colors">
                 <CiFacebook size={20} />
-              </a>
-              <a href="#" className="hover:text-blue-400 transition-colors">
+              </Link>
+              <Link to={"/"} className="hover:text-blue-400 transition-colors">
                 <CiTwitter size={20} />
-              </a>
-              <a href="#" className="hover:text-blue-400 transition-colors">
+              </Link>
+              <Link to={'/'} className="hover:text-blue-400 transition-colors">
                 <CiLinkedin size={20} />
-              </a>
-              <a href="#" className="hover:text-blue-400 transition-colors">
+              </Link>
+              <Link to={'/'} className="hover:text-blue-400 transition-colors">
                 <CiInstagram size={20} />
-              </a>
+              </Link>
             </div>
           </div>
 
           <div>
             <h3 className="text-white text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
-                  Our Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
-                  Find a Doctor
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
-                  Book Appointment
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
-                  Latest News
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
-                  Career Opportunities
-                </a>
-              </li>
+              <Link to={"/"} className="hover:text-blue-400 transition-colors">
+                About Us
+              </Link>
+              <Link to={"/"} className="hover:text-blue-400 transition-colors">
+                Our Services
+              </Link>
+              <Link to={"/"} className="hover:text-blue-400 transition-colors">
+                Find a Doctor
+              </Link>
+              <Link to={"/"} className="hover:text-blue-400 transition-colors">
+                Book Appointment
+              </Link>
+              <Link to={"/"} className="hover:text-blue-400 transition-colors">
+                Latest News
+              </Link>
+              <Link to={"/"} className="hover:text-blue-400 transition-colors">
+                Career Opportunities
+              </Link>
             </ul>
           </div>
 
           <div>
             <h3 className="text-white text-lg font-bold mb-4">Contact Us</h3>
             <ul className="space-y-3">
-              <li className="flex items-center">
+              <Link className="flex items-center">
                 <Phone size={16} className="mr-2" />
-                <span>Emergency: +123 456 789</span>
-              </li>
-              <li className="flex items-center">
+                <span>Emergency: +250 78792967</span>
+              </Link>
+              <Link className="flex items-center">
                 <Mail size={16} className="mr-2" />
-                <span>info@mamacare.com</span>
-              </li>
-              <li className="flex items-center">
+                <span>mamacare.health@gmail.com</span>
+              </Link>
+              <Link className="flex items-center">
                 <MapPin size={16} className="mr-2" />
                 <span>123 Healthcare Ave, Medical City</span>
-              </li>
-              <li className="flex items-center">
+              </Link>
+              <Link className="flex items-center">
                 <Clock size={16} className="mr-2" />
                 <span>24/7 Emergency Services</span>
-              </li>
+              </Link>
             </ul>
           </div>
 
