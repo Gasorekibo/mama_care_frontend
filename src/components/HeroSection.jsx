@@ -60,8 +60,11 @@ const HeroSection = ({ auth, navigate, hospitals }) => {
       <div className="max-w-7xl mx-auto px-4 -mt-16 relative z-30">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
-            { number: hospitals?.length + "+", label: "Hospital Registered" },
-            { number: "500+", label: "Happy Patients" },
+            hospitals.length>0 && {
+              number: hospitals?.length + "+",
+              label: "Hospital Registered",
+            },
+            { number: "20+", label: "Happy Patients" },
             { number: "1+", label: "Years Experience" },
             { number: "24/7", label: "Emergency Care" },
           ].map((stat, index) => (
